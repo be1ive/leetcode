@@ -5,17 +5,16 @@ package com.be1ive.leetcode;
  */
 public class DistinctSubsequences {
 
+    //  dp[i][j] number of sequences of [T[j]..T[N]] in [S[i]..S[M]]
+    //  T[N] == "" => dp[i][N] = 1
+    //  S[M] == "" => dp[M][j] = 0
+    //
+    //  dp[i][j] = (S[i] == T[j]) ? dp[i + 1][j + 1] + dp[i + 1][j]
+    //                            : dp[i + 1][j]
     public static int numDistinct(String S, String T) {
 
         if (S.length() >= T.length()) {
             int[] dp = new int [T.length() + 1];
-
-            //  dp[i][j] number of sequences of [T[j]..T[N]] in [S[i]..S[M]]
-            //  T[N] == "" => dp[i][N] = 1
-            //  S[M] == "" => dp[M][j] = 0
-            //
-            //  dp[i][j] = (S[i] == T[j]) ? dp[i + 1][j + 1] + dp[i + 1][j]
-            //                            : dp[i + 1][j]
 
             for (int i = 0; i <= S.length(); i++) {
                 dp[T.length()] = 1;
